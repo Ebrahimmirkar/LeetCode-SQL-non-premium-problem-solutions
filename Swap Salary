@@ -1,0 +1,17 @@
+Link: https://leetcode.com/problems/swap-salary/
+
+Problem: Write an SQL query to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
+Note that you must write a single update statement, do not write any select statement for this problem.
+
+Code:
+UPDATE salary
+    SET sex = if(sex= 'm', 'f','m');
+    
+    
+    
+Output: 
+| id | name | sex | salary |
+| -- | ---- | --- | ------ |
+| 1  | A    | f   | 2500   |
+| 2  | B    | m   | 1500   |
+| 3  | C    | f   | 5500   |
