@@ -1,0 +1,21 @@
+Link: https://leetcode.com/problems/find-followers-count/
+
+Problem: Write an SQL query that will, for each user, return the number of followers.
+Return the result table ordered by user_id in ascending order.
+
+Code: 
+
+SELECT 
+USER_ID, COUNT(FOLLOWER_ID) AS FOLLOWERS_COUNT
+FROM FOLLOWERS
+GROUP BY USER_ID
+ORDER BY USER_ID ASC
+
+
+Output: 
+
+| USER_ID | FOLLOWERS_COUNT |
+| ------- | --------------- |
+| 0       | 1               |
+| 1       | 1               |
+| 2       | 2               |
