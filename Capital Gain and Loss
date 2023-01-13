@@ -1,0 +1,25 @@
+Link: https://leetcode.com/problems/capital-gainloss/
+
+Problem: Write an SQL query to report the Capital gain/loss for each stock.
+The Capital gain/loss of a stock is the total gain or loss after buying and selling the stock one or many times.
+Return the result table in any order.
+
+Code: 
+
+SELECT STOCK_NAME, 
+    SUM(CASE 
+            WHEN OPERATION = 'BUY' THEN - PRICE 
+            WHEN OPERATION = 'SELL' THEN PRICE
+        
+            END) AS CAPITAL_GAIN_LOSS
+FROM STOCKS
+GROUP BY STOCK_NAME;
+
+Output: 
+
+| STOCK_NAME   | CAPITAL_GAIN_LOSS |
+| ------------ | ----------------- |
+| Leetcode     | 8000              |
+| Corona Masks | 9500              |
+| Handbags     | -23000            |
+
