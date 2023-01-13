@@ -1,0 +1,24 @@
+Link: https://leetcode.com/problems/department-highest-salary/
+
+Problem: Write an SQL query to find employees who have the highest salary in each of the departments.
+Return the result table in any order.
+
+Code: 
+
+Select D.Name Department, E.Name Employee, E.Salary
+from Employee E, Department D
+where E.DepartmentId = D.Id and (DepartmentId, Salary)
+ in
+(select DepartmentId, max(Salary) 
+from Employee
+group by DepartmentId)
+
+
+Output: 
+
+| Department | Employee | Salary |
+| ---------- | -------- | ------ |
+| IT         | Jim      | 90000  |
+| Sales      | Henry    | 80000  |
+| IT         | Max      | 90000  |
+
