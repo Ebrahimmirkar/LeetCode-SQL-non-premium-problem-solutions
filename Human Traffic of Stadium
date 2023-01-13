@@ -1,0 +1,22 @@
+Link: https://leetcode.com/problems/human-traffic-of-stadium/
+
+Problem: Write an SQL query to display the records with three or more rows with consecutive id's, and the number of people is greater than or equal to 100 for each.
+Return the result table ordered by visit_date in ascending order.
+
+Code: 
+WITH total as
+(SELECT *, id - ROW_NUMBER()OVER(ORDER BY id ASC) AS rn
+FROM stadium
+WHERE people >= 100)
+SELECT id, visit_date, people
+FROM total
+WHERE rn 
+IN(SELECT rn FROM total GROUP BY rn HAVING count(*)>=3)
+
+
+Output: 
+
+| id | visit_date | people |
+| -- | ---------- | ------ |
+| 5  | 2017-01-05 | 145    |
+| 6  | 2017-01-06 | 1455   |
