@@ -1,0 +1,31 @@
+Link: https://leetcode.com/problems/top-travellers/
+
+Problem: Write an SQL query to report the distance traveled by each user.
+Return the result table ordered by travelled_distancein descending order, if two or more users traveled the same distance, order them by their name in ascending order.
+
+
+Code: 
+
+SELECT U.NAME,
+    SUM(
+        IF(DISTANCE IS NULL,0,DISTANCE)
+        ) 
+            AS TRAVELLED_DISTANCE
+FROM USERS AS U
+LEFT JOIN RIDES AS R
+ON U.ID = R.USER_ID
+GROUP BY U.ID
+ORDER BY TRAVELLED_DISTANCE DESC, U.NAME ASC
+
+
+Output:
+
+| NAME     | TRAVELLED_DISTANCE |
+| -------- | ------------------ |
+| Elvis    | 450                |
+| Lee      | 450                |
+| Bob      | 317                |
+| Jonathan | 312                |
+| Alex     | 222                |
+| Alice    | 120                |
+| Donald   | 0                  |
