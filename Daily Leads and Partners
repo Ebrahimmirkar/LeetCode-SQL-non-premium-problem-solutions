@@ -1,0 +1,22 @@
+Link: https://leetcode.com/problems/daily-leads-and-partners/
+
+Problem: Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
+Return the result table in any order.
+
+Code:
+
+ SELECT  
+   DATE_ID, MAKE_NAME, COUNT(DISTINCT LEAD_ID) AS UNIQUE_LEADS,
+    COUNT(DISTINCT PARTNER_ID) AS UNIQUE_PARTNERS
+FROM DAILYSALES 
+GROUP BY DATE_ID, MAKE_NAME
+  
+  
+  Output: 
+
+| DATE_ID    | MAKE_NAME | UNIQUE_LEADS | UNIQUE_PARTNERS |
+| ---------- | --------- | ------------ | --------------- |
+| 2020-12-07 | honda     | 3            | 2               |
+| 2020-12-07 | toyota    | 1            | 2               |
+| 2020-12-08 | honda     | 2            | 2               |
+| 2020-12-08 | toyota    | 2            | 3               |
