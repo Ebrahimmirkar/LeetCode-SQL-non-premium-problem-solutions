@@ -1,0 +1,21 @@
+Link: https://leetcode.com/problems/the-latest-login-in-2020/
+
+Problem: Write an SQL query to report the latest login for all users in the year 2020. Do not include the users who did not login in 2020.
+Return the result table in any order.
+
+
+Code: 
+select user_id, max(time_stamp) as last_stamp
+from logins 
+where time_stamp like '%2020%'
+group by user_id 
+
+
+Output: 
+
+| user_id | last_stamp          |
+| ------- | ------------------- |
+| 6       | 2020-06-30 15:06:07 |
+| 8       | 2020-12-30 00:46:50 |
+| 2       | 2020-01-16 02:49:50 |
+
