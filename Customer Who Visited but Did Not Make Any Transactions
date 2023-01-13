@@ -1,0 +1,22 @@
+Link: https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/
+
+Problem: Write an SQL query to find the IDs of the users who visited without making any transactions and the number of times they made these types of visits.
+Return the result table sorted in any order.
+
+
+Code:
+SELECT customer_id, COUNT(visit_id) as count_no_trans 
+FROM Visits
+WHERE visit_id NOT IN (
+    SELECT visit_id FROM Transactions
+    )
+GROUP BY customer_id
+
+
+Output: 
+
+| customer_id | count_no_trans |
+| ----------- | -------------- |
+| 30          | 1              |
+| 96          | 1              |
+| 54          | 2              |
