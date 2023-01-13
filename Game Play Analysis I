@@ -1,0 +1,18 @@
+Link: https://leetcode.com/problems/game-play-analysis-i/
+
+Problem: Write an SQL query to report the first login date for each player.
+Return the result table in any order.
+
+Code: 
+SELECT player_id, MIN(EVENT_DATE) AS first_login
+FROM ACTIVITY
+GROUP BY PLAYER_ID
+ORDER BY PLAYER_ID ASC;
+
+Output: 
+
+| player_id | first_login |
+| --------- | ----------- |
+| 1         | 2016-03-01  |
+| 2         | 2017-06-25  |
+| 3         | 2016-03-02  
