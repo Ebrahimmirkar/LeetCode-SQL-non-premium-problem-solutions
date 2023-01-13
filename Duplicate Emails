@@ -1,0 +1,16 @@
+Link : https://leetcode.com/problems/duplicate-emails/
+
+Problem: Write an SQL query to report all the duplicate emails.
+Return the result table in any order.
+
+Code: 
+
+SELECT DISTINCT(P1.EMAIL) 
+FROM PERSON P1, PERSON P2
+WHERE P1.EMAIL = P2.EMAIL AND P1.ID <> P2.ID;
+
+Output : 
+
+| EMAIL   |
+| ------- |
+| a@b.com |
