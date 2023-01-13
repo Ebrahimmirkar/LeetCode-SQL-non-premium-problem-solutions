@@ -1,0 +1,21 @@
+Link: https://leetcode.com/problems/consecutive-numbers/description/
+
+Problem: Write an SQL query to find all numbers that appear at least three times consecutively.
+Return the result table in any order.
+
+
+Code: 
+WITH CTE AS 
+(SELECT * ,
+ LEAD (NUM,1) OVER () AS NEXT, 
+ LEAD (NUM,2) OVER () AS NEXT_2_NEXT CONSECUTIVE NUMBER
+FROM LOGS)
+SELECT DISTINCT NUM AS CONSECUTIVENUMS 
+FROM CTE 
+WHERE NUM = NEXT 
+AND NUM = NEXT_2_NEXT
+
+Output: 
+| CONSECUTIVENUMS |
+| --------------- |
+| 1 |
