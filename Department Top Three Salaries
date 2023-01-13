@@ -1,0 +1,31 @@
+Link: https://leetcode.com/problems/department-top-three-salaries/description/
+
+Problem: A company's executives are interested in seeing who earns the most money in each of the company's departments. A high earner in a department is an employee who has a salary in the top three unique salaries for that department.
+Write an SQL query to find the employees who are high earners in each of the departments.
+Return the result table in any order.
+
+Code: 
+
+select d.Name Department, e1.Name Employee, e1.Salary
+from Employee e1 
+join Department d
+on e1.DepartmentId = d.Id
+where (select count(distinct(e2.Salary)) 
+                  from Employee e2 
+                  where e2.Salary > e1.Salary 
+                  and e1.DepartmentId = e2.DepartmentId
+                  ) < 3;
+
+
+Output: 
+
+| Department | Employee | Salary |
+| ---------- | -------- | ------ |
+| IT         | Joe      | 85000  |
+| Sales      | Henry    | 80000  |
+| Sales      | Sam      | 60000  |
+| IT         | Max      | 90000  |
+| IT         | Randy    | 85000  |
+| IT         | Will     | 70000  |
+
+
