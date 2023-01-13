@@ -1,0 +1,25 @@
+Link: https://leetcode.com/problems/exchange-seats/
+
+Problem: Write an SQL query to swap the seat id of every two consecutive students. 
+If the number of students is odd, the id of the last student is not swapped.
+Return the result table ordered by id in ascending order.
+
+Code: 
+
+SELECT id,
+    CASE WHEN id%2 = 0 THEN (LAG(student) OVER (ORDER BY id))
+ELSE IFNULL(LEAD(student) OVER (ORDER BY id),student)
+END as "student"
+FROM Seat
+
+
+Output: 
+
+| id | student |
+| -- | ------- |
+| 1  | Doris   |
+| 2  | Abbot   |
+| 3  | Green   |
+| 4  | Emerson |
+| 5  | Jeames  |
+
