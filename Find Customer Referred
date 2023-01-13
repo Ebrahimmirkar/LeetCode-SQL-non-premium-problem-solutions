@@ -1,0 +1,20 @@
+Link: https://leetcode.com/problems/find-customer-referee/
+
+Problem: Write an SQL query to report the names of the customer that are not referred by the customer with id = 2.
+Return the result table in any order.
+
+Code:
+
+SELECT NAME
+FROM CUSTOMER 
+WHERE REFEREE_ID IS NULL OR REFEREE_ID !=2
+
+Output: 
+
+| NAME |
+| ---- |
+| Will |
+| Jane |
+| Bill |
+| Zack |
+
