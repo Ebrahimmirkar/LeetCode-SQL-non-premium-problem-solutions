@@ -1,0 +1,24 @@
+Link: https://leetcode.com/problems/market-analysis-i/
+
+Problem: Write an SQL query to find for each user, the join date and the number of orders they made as a buyer in 2019.
+Return the result table in any order.
+
+Code: 
+
+SELECT U.USER_ID AS BUYER_ID, U.JOIN_DATE, 
+COUNT(ORDER_ID) AS ORDERS_IN_2019
+FROM USERS AS U 
+LEFT JOIN ORDERS AS O 
+ON U.USER_ID = O.BUYER_ID
+AND YEAR(ORDER_DATE) = '2019'
+GROUP BY USER_ID;
+
+
+Output: 
+
+| BUYER_ID | JOIN_DATE  | ORDERS_IN_2019 |
+| -------- | ---------- | -------------- |
+| 1        | 2018-01-01 | 1              |
+| 2        | 2018-02-09 | 2              |
+| 3        | 2018-01-19 | 0              |
+| 4        | 2018-05-21 | 0              
